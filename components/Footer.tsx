@@ -1,0 +1,55 @@
+"use client";
+
+import { ExternalLink } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+export function Footer() {
+  const pathname = usePathname();
+
+  // Hide footer on watch pages for immersive video experience
+  if (pathname?.startsWith("/watch")) {
+    return null;
+  }
+
+  return (
+    <footer className="border-t border-border/50 bg-background/80 backdrop-blur-sm">
+      <div className="container mx-auto px-4 py-6">
+        <div className="flex flex-col items-center justify-center gap-3">
+          {/* API Promo */}
+          {/* <ul className="space-y-2 text-sm">
+              <li>
+                <a 
+                  href="https://instagram.com/ahmad.syahabdullah" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-primary transition-colors inline-flex items-center gap-1 text-primary hover:underline font-semibold"
+                >
+                  CEO ASANONTON AHMAD SYAH ABDULLAH
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              </li>
+          </ul> */}
+
+          <p className="text-sm text-muted-foreground text-center">
+            CEO:{" "}
+            <a 
+                  href="https://instagram.com/ahmad.syahabdullah" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-primary transition-colors inline-flex items-center gap-1 text-primary hover:underline font-semibold"
+                >
+                  AHMADSYAHABDULLAH
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+          </p>
+
+          {/* Copyright */}
+          <p className="text-xs text-muted-foreground/80 text-center font-medium">
+            © {new Date().getFullYear()} Made with ❤️ by AHMADSYAHABDULLAH
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+}
